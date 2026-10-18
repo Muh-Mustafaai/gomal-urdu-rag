@@ -1,0 +1,6 @@
+pyspark
+beautifulsoup4
+requests
+rdflib
+pandas
+pyarrow
