@@ -31,11 +31,7 @@ A domain-specific RAG pipeline for Urdu language queries, focused on local histo
 ### Tech Stack
 Python, PySpark, Scikit-learn, Gradio, JSON
 
-### Future Work (For Erasmus DEAI)
-- Scale to Knowledge Graph (Neo4j + RDF)
-- Replace TF-IDF with multilingual embeddings (Urdu-BERT)
-- Vector DB: Qdrant/Milvus
-- Deploy on Docker/K8s
+
 
 ### Author
-Mustafa - BS AI Gomal | Target: DEAI Erasmus Mundus 2027
+Mustafa - BS AI Gomal 
