@@ -1,25 +1,41 @@
-# gomal-urdu-rag
+# Gomal Urdu RAG - FYP 2025
 
-Building a scalable RAG pipeline for Urdu low-resource language.
-This is my FYP at Gomal University DI Khan, BS AI 7th sem.
+## 🇵🇰 Scalable Urdu Retrieval-Augmented Generation System for Low-Resource Language
 
-## What this does
-- Scrapes Urdu Wikipedia
-- Cleans with Spark (parquet)
-- Builds RDF Knowledge Graph
-- Next: Qdrant vector DB + RAG API
+**BS AI, Gomal University, DI Khan | Batch 2023-27**
 
-## Why?
-Urdu has no good structured dataset. Goal is to make a pipeline that can handle 100k docs, not just 100.
+### Overview
+A domain-specific RAG pipeline for Urdu language queries, focused on local history (Karnal Sher Khan, DI Khan region). Built to address hallucination in general LLMs like ChatGPT for Urdu.
 
-## Tech
-Python, PySpark, RDFLib, Neo4j (later), Qdrant
+### Why not ChatGPT?
+- ChatGPT hallucinates local history & weak in Roman Urdu
+- Our system is **verified, offline-capable, and domain-specific**
+- No API cost, works for schools in KP with no internet
 
-## Current status
-Phase 1 done: Scraper + Spark cleaning + KG turtle file
+### Architecture
+1. **Scraping:** Urdu Wikipedia (Custom scraper for 100+ docs)
+2. **Cleaning:** PySpark distributed cleaning (5.5GB heap config)
+3. **Embeddings:** TF-IDF with Urdu tokenization
+4. **Vector Search:** Cosine similarity + title matching
+5. **RAG QA:** Retrieval -> Context -> Answer
+6. **UI:** Gradio with Roman Urdu -> Urdu mapping
 
-## How to run
-pip install -r requirements.txt
-python src/ingestion/scrape_wikipedia_urdu.py
-python src/ingestion/spark_cleaning.py
-python src/kg/build_kg.py
+### Challenges Solved
+- Issue: Urdu Wikipedia page "Karnal Sher Killi" contained village data, not hero data
+- Solution: Implemented data curation layer with manually verified dataset for Nishan-e-Haider heroes
+
+### Results
+- Query: "Karnal Sher Killi kon tha?" -> Correct answer with source
+- Supports both Urdu script and Roman Urdu
+
+### Tech Stack
+Python, PySpark, Scikit-learn, Gradio, JSON
+
+### Future Work (For Erasmus DEAI)
+- Scale to Knowledge Graph (Neo4j + RDF)
+- Replace TF-IDF with multilingual embeddings (Urdu-BERT)
+- Vector DB: Qdrant/Milvus
+- Deploy on Docker/K8s
+
+### Author
+Mustafa - BS AI Gomal | Target: DEAI Erasmus Mundus 2027
